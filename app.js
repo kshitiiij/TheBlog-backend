@@ -11,8 +11,8 @@ app.get('/',(req,res) => {
 }) 
 
 //Middleware setup
-app.use(cors("/blogs",blogRoute));
-// app.use("/blogs",blogRoute);
+app.use(cors());
+app.use("/blogs",blogRoute);
 
 app.post('/blogs', (req,res) => {
    console.log(req)
