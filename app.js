@@ -4,13 +4,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const blogRoute = require("./routes/blog");
 const connectDB = require("./db/connect");
+const cors = require("cors");
 
 app.get('/',(req,res) => {
     res.send("server is running!");
 }) 
 
 //Middleware setup
-app.use("/blogs",blogRoute);
+app.use(cors("/blogs",blogRoute));
+// app.use("/blogs",blogRoute);
 
 app.post('/blogs', (req,res) => {
    console.log(req)
