@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3000;
 const blogRoute = require("./routes/blog");
 const connectDB = require("./db/connect");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 app.get('/',(req,res) => {
     res.send("server is running!");
@@ -12,11 +13,9 @@ app.get('/',(req,res) => {
 
 //Middleware setup
 app.use(cors());
+app.use(bodyParser.json());
 app.use("/blogs",blogRoute);
 
-app.post('/blogs', (req,res) => {
-   console.log(req)
- })
 
 const start = async () => {
     try {
